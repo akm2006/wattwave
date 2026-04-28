@@ -1,0 +1,73 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+build/
+dashboard/node_modules/
+dashboard/.env.local
+dashboard/.env.development.local
+dashboard/.env.test.local
+dashboard/.env.production.local
+dashboard/*.tsbuildinfo
+
+# Arduino/ESP32
+build/
+.pio/
+.vscode/
+firmware/config.h
+*.bin
+*.elf
+*.map
+*.hex
+*.dfu
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Arduino/ESP32 build files
+build/
+*.bin
+*.elf
+*.map
+*.hex
+*.dfu
+*.zip
+
+# OS
+Thumbs.db
+.DS_Store
+
+# MCP temporary files
+.playwright-mcp/
+*.webp
+
+# Keep project assets
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
+!assets/*.svg
