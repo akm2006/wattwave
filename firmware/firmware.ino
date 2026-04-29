@@ -9,7 +9,7 @@
 #include <esp_system.h>
 #include "config.h"
 
-#define VERSION "v4.0-POLISHED-MQTT-OTA-DIAGNOSTICS"
+#define VERSION "v1.0"
 
 // ---------------- PINS ----------------
 #define RELAY1 26
@@ -141,7 +141,7 @@ bool updateDeviceStateInSupabase(const String& deviceId, bool state) {
   HTTPClient http;
   supabaseNet.setInsecure();
 
-  String url = SUPABASE_BASE_URL + "devices?id=eq." + deviceId;
+  String url = String(SUPABASE_BASE_URL) + "devices?id=eq." + deviceId;
 
   if (!http.begin(supabaseNet, url)) {
     Serial.println("Supabase device PATCH begin failed.");
@@ -151,7 +151,7 @@ bool updateDeviceStateInSupabase(const String& deviceId, bool state) {
   http.setTimeout(8000);
   http.addHeader("Content-Type", "application/json");
   http.addHeader("apikey", SUPABASE_API_KEY);
-  http.addHeader("Authorization", "Bearer " + SUPABASE_API_KEY);
+  http.addHeader("Authorization", "Bearer " + String(SUPABASE_API_KEY));
   http.addHeader("Prefer", "return=minimal");
 
   String json = "{";
@@ -249,7 +249,7 @@ bool restoreStatesFromSupabase() {
   HTTPClient http;
   supabaseNet.setInsecure();
 
-  String url = SUPABASE_BASE_URL + "devices?select=id,relay_state";
+  String url = String(SUPABASE_BASE_URL) + "devices?select=id,relay_state";
 
   if (!http.begin(supabaseNet, url)) {
     Serial.println("Supabase restore begin failed.");
@@ -258,7 +258,7 @@ bool restoreStatesFromSupabase() {
 
   http.setTimeout(8000);
   http.addHeader("apikey", SUPABASE_API_KEY);
-  http.addHeader("Authorization", "Bearer " + SUPABASE_API_KEY);
+  http.addHeader("Authorization", "Bearer " + String(SUPABASE_API_KEY));
 
   int code = http.GET();
   lastSupabaseCode = code;
@@ -576,7 +576,7 @@ bool sendReadingToSupabase(const String& deviceId, float voltage, float current,
   http.setTimeout(8000);
   http.addHeader("Content-Type", "application/json");
   http.addHeader("apikey", SUPABASE_API_KEY);
-  http.addHeader("Authorization", "Bearer " + SUPABASE_API_KEY);
+  http.addHeader("Authorization", "Bearer " + String(SUPABASE_API_KEY));
   http.addHeader("Prefer", "return=minimal");
 
   String json = "{";

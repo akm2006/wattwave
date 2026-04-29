@@ -71,3 +71,6 @@ Thumbs.db
 !assets/*.jpg
 !assets/*.jpeg
 !assets/*.svg
+
+# Local Tools
+tools/
